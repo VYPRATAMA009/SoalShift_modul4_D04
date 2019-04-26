@@ -32,9 +32,8 @@ static const char *dirpath = "/home/nanta/shift4";
 void encrypt(const char *name, int indent)
 {
     char tes[94] = "qE1~ YMUR2\"`hNIdPzi%^t@(Ao:=CQ,nx4S[7mHFye#aT6+v)DfKL$r?bkOGB>}!9_wV']jcp5JZ&Xl|\\8s;g<{3.u*W-0";
-    //printf("%ld",strlen(tes));
     DIR *dir;
-    char buffer[1000],buffer2[1000],buffer3[1000],hasil[1000],ch,ce;
+    char buffer[100],buffer2[100],hasil[100],ch,ce;
     struct dirent *entry;
 
     if (!(dir = opendir(name)))
@@ -51,17 +50,11 @@ void encrypt(const char *name, int indent)
                 continue;
             snprintf(path, sizeof(path), "%s/%s", name, entry->d_name);
             strcpy(buffer, entry->d_name);
-            //printf("%s\n", buffer);
-
-            strcat(buffer2,name);
-            strcat(buffer2,"/");
-            
 
             for(int i=0;i<strlen(buffer);i++){
 			ch = buffer[i];
                 if(ch == '/'){
                     ce = '/';
-
                     hasil[i] = ce;
                 }
                 else{
@@ -74,23 +67,12 @@ void encrypt(const char *name, int indent)
                         }
                     }
             }
-            //strcpy(hasil,"");
-            strcat(buffer2,hasil);
-            rename(path,buffer2);
-            strcpy(path,buffer2);
+            sprintf(buffer2, "/%s",hasil);
+            rename(buffer,buffer2);
+	    sprintf(path, "%s%s", name, buffer2);
             encrypt(path, indent + 2);
         } else {
             strcpy(buffer, entry->d_name);
-            //printf("%s\n", buffer);
-
-            strcat(buffer2,name);
-            strcat(buffer2,"/");
-            strcat(buffer3,buffer2);
-            strcat(buffer2,entry->d_name);
-
-            
-            
-
             for(int i=0;i<strlen(buffer);i++){
 			ch = buffer[i];
                 if(ch == '/'){
@@ -108,8 +90,8 @@ void encrypt(const char *name, int indent)
                         }
                     }
             }
-            strcat(buffer3,hasil);
-            rename(buffer2,buffer3);
+            sprintf(buffer2, "/%s", hasil);
+            rename(buffer,buffer2);
 
         }
 }
