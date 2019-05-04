@@ -37,4 +37,4 @@ Jika ditemukan file dengan spesifikasi tersebut ketika membuka direktori, Atta a
 
 ```
 ## keterangan,
-file c terbaru: revisi_AFSHiaAP_D04 ,
+file c & penjelasan terbaru: revisi_AFSHiaAP_D04 ,
