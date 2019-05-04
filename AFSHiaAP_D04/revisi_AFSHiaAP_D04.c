@@ -315,7 +315,7 @@ static int xmp_utimens(const char *path, const struct timespec ts[2])
 	int res;
 
 	res = utimensat(0, fpath, ts, AT_SYMLINK_NOFOLLOW);
-	flag = 1;	//q gapaham tam sing iki wkwkw
+	flag = 1;	
 	if (res == -1)
 		return -errno;
 
@@ -527,8 +527,8 @@ static struct fuse_operations xmp_oper = {
 
 int main(int argc, char *argv[])
 {	
-	//untuk menjalankan enkripsi, uncomment fungsi dibawah
-	//encrypt(dirpath);
+	
+	encrypt(dirpath);
 	umask(0);
 	return fuse_main(argc, argv, &xmp_oper, NULL);
 }
