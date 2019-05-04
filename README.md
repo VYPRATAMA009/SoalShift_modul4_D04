@@ -37,4 +37,4 @@ Jika ditemukan file dengan spesifikasi tersebut ketika membuka direktori, Atta a
 
 ```
 ## keterangan,
-dikarenakan berbagai kendala dari nomer 1 hingga 5 belum dapat diselesaikan,
+file c terbaru: revisi_namafile_D04 ,
